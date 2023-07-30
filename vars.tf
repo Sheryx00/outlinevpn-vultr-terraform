@@ -19,9 +19,29 @@
 
 
 variable "region_code" {
+  description = "Vultr Region"
   default = "FRA"
 }
 
 variable "server_name" {
+  description = "Product Name"
   default = "outline"
+}
+
+variable "vc_id" {
+  description = "Vultr plan id"
+  default = "vc2-1c-1gb"
+}
+
+variable "api_port" {
+  description = "Outline API port"
+  type = number
+  default = "23232"
+
+}
+
+variable "keys_port" {
+  description = "Outline KEYS port"
+  type = number
+  default = "23233"
 }
