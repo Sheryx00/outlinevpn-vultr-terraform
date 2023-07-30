@@ -1,17 +1,7 @@
 # Fork of jadolg/outlinevpn-vultr-terraform:master
 
 I just added the api port as variable and configured iptables to open it, so it
-takes less steps to connect set up :)
-
---------
-jadolg README:
-
-Provision an [outline](https://getoutline.org/) server on [Vultr](https://www.vultr.com/)
-
-You need to set `VULTR_API_KEY` (https://my.vultr.com/settings/#settingsapi) in your environment before trying to apply.
-
-Edit `vars.tf` to setup the correct region and (Sheryx00: and port!) for you.
-
+takes less steps to connect set up.
 
 ## RUN
 1. Download the [Outline's Manager and client](https://getoutline.org/es/)
