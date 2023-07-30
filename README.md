@@ -1,11 +1,16 @@
-# Fork of jadolg/outlinevpn-vultr-terraform:master
+# Fork of jadolg/outlinevpn-vultr-terraform
 
-I just added the api port as variable and configured iptables to open it, so it
-takes less steps to connect set up.
+I just added the api & keys ports as variables, and configured iptables for open it. 
+It takes less steps to set up now.
+
+## Requirements
+1. Download the [Outline's Manager and client](https://getoutline.org/es/get-started/)
+2. Create a account at [Vultr](https://vultr.com)
+3. Add some payment method to your Vultr's account
+4. Set your `VULTR_API_KEY`: `export VULTR_API_KEY=<VULTR_API_KEY>`
 
 ## RUN
-1. Download the [Outline's Manager and client](https://getoutline.org/es/)
-2. Set your `VULTR_API_KEY`: `export VULTR_API_KEY=<VULTR_API_KEY>`
-3. Run `terraform init && terraform apply`
-4. Copy the output `apiUrl` to your Outline Manager
-5. Copy the key key (share button) and copy the ss:// link in your Outline Client
+1. Run `terraform init && terraform apply`
+2. Open your Outline Manager and copy the output `apiUrl` to your Outline Manager
+3. Open your Outline Client and copy the `ss://` link.
+4. Connect :)
