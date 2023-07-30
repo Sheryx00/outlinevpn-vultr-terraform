@@ -1,5 +1,6 @@
-# outlinevpn-vultr-terraform
-#### Fork of jadolg/outlinevpn-vultr-terraform
+# Outlinevpn-vultr-terraform
+
+##### Fork of jadolg/outlinevpn-vultr-terraform repository
 
 I just added the api & keys ports as variables, and configured iptables for open it. 
 It takes less steps to set up now.
@@ -12,6 +13,6 @@ It takes less steps to set up now.
 
 ## RUN
 1. Run `terraform init && terraform apply`
-2. Open your Outline Manager and copy the output `apiUrl` to your Outline Manager
-3. Open your Outline Client and copy the `ss://` link.
+2. Open your Outline Manager and paste the output `apiUrl` to your Outline Manager
+3. Open your Outline Client and paste the `ss://` link.
 4. Connect :)
