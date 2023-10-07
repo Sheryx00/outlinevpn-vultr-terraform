@@ -45,3 +45,15 @@ variable "keys_port" {
   type = number
   default = "23233"
 }
+
+variable "ssh_public_key" {
+
+  description = "SSH root public key"
+  type = string
+}
+
+variable "ssh_private_key" {
+
+  description = "SSH root private key"
+  type = string
+}
