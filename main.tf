@@ -17,9 +17,7 @@ resource "aws_lightsail_instance" "custom" {
   blueprint_id      = "amazon_linux_2"
   bundle_id         = "nano_1_0"
   user_data = data.template_file.install_outline_server.rendered
-
-
-
+  
   provisioner "remote-exec" {
     inline = [
       "echo 'Waiting for client config ...'",      
@@ -43,5 +41,17 @@ template = file("${path.module}/install_outline_server.sh")
 vars = {
   api_port = var.api_port
   keys_port = var.keys_port
+  }
+}
+
+
+
+resource "aws_lightsail_instance_public_ports" "custom" {
+  instance_name = aws_lightsail_instance.custom.name
+
+  port_info {
+    protocol  = "tcp"
+    from_port = var.api_port
+    to_port   = var.keys_port
   }
 }
