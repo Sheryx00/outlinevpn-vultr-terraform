@@ -1,38 +1,25 @@
-# Configure the Vultr Provider
-# Fork of jadolg's outlinevpn-vultr-terraform
-# https://github.com/jadolg/outlinevpn-vultr-terraform.git
-
 terraform {
   required_providers {
-    vultr = {
-      source = "vultr/vultr"
-      version = "2.16.2"
+    aws = {
+      source = "hashicorp/aws"
+      version = ">= 3.0"
     }
   }
 }
 
-resource "vultr_ssh_key" "root" {
-  name = "Root SSH KEY"
-  ssh_key = "${file(var.ssh_public_key)}"
+provider "aws" {
+  region = var.aws_lightsail_provider_zone
 }
 
-# Create outline server
-resource "vultr_instance" "outline" {
-  # cheapest plan $5/month
-  plan = var.vc_id
-  region = var.region_code
-  ssh_key_ids = ["${vultr_ssh_key.root.id}"]
-
-  # ubuntu 23.04
-  os_id = "2104"
-  label = var.server_name
-  hostname = var.server_name
-  enable_ipv6 = true
-  backups = "disabled"
-  activation_email = true
-  ddos_protection = false
+resource "aws_lightsail_instance" "custom" {
+  name              = var.server_name
+  availability_zone = var.aws_lightsailt_instance_zone
+  blueprint_id      = "amazon_linux_2"
+  bundle_id         = "nano_1_0"
   user_data = data.template_file.install_outline_server.rendered
-  
+
+
+
   provisioner "remote-exec" {
     inline = [
       "echo 'Waiting for client config ...'",      
@@ -40,23 +27,21 @@ resource "vultr_instance" "outline" {
       "echo 'DONE!'",
       "cat /tmp/outline-install-details.txt",
     ]
-
-    connection {
-      host = vultr_instance.outline.main_ip
-      type = "ssh"
-      user = "root"
-      # password = vultr_instance.outline.default_password
-      private_key = "${file(var.ssh_private_key)}"
-      timeout = "10m"
-      agent = "false"
     }
+
+  connection {
+    type        = "ssh"
+    user        = "ec2-user"
+    private_key = file(var.keypair)
+    host        = self.public_ip_address
   }
-}
 
+
+}
 data "template_file" "install_outline_server" {
-  template = file("install_outline_server.sh")
-  vars = {
-    api_port = var.api_port
-    keys_port = var.keys_port
-    }
+template = file("${path.module}/install_outline_server.sh")
+vars = {
+  api_port = var.api_port
+  keys_port = var.keys_port
+  }
 }

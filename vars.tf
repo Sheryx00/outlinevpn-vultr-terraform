@@ -1,36 +1,7 @@
-# NAME            REGION CODE
-# Frankfurt       FRA
-# Atlanta         ATL
-# Chicago         ORD
-# Miami           MIA
-# New Jersey      EWR
-# Seoul           ICN
-# Silicon Valley  SJC
-# Singapore       SGP
-# London          LHR
-# Sydney          SYD
-# Dallas          DFW
-# Seattle         SEA
-# Tokyo           NRT
-# Los Angeles     LAX
-# Amsterdam       AMS
-# Paris           CDG
-# Toronto         YTO
-
-
-variable "region_code" {
-  description = "Vultr Region"
-  default = "FRA"
-}
 
 variable "server_name" {
   description = "Product Name"
   default = "outline"
-}
-
-variable "vc_id" {
-  description = "Vultr plan id"
-  default = "vc2-1c-1gb"
 }
 
 variable "api_port" {
@@ -46,14 +17,23 @@ variable "keys_port" {
   default = "23233"
 }
 
-variable "ssh_public_key" {
+# AWS ZONE
+#  us-east-1a
+#  us-east-1b
+#  us-east-1c
+#  us-east-1d
+#  us-east-1e
+#  us-east-1f
 
-  description = "SSH root public key"
-  type = string
+variable aws_lightsail_provider_zone {
+  default="us-east-1"
 }
 
-variable "ssh_private_key" {
+variable aws_lightsailt_instance_zone {
+    default="us-east-1b"
+}
 
-  description = "SSH root private key"
+variable "keypair" {
   type = string
+  default = "~/.ssh/.aws-keypair.pem"
 }

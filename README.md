@@ -7,9 +7,9 @@ It takes less steps to set up now.
 
 ## Requirements
 1. Download the [Outline Manager and client](https://getoutline.org/es/get-started/)
-2. Create an account at [Vultr](https://vultr.com)
-3. Add some payment method to your Vultr's account
-4. Set your `VULTR_API_KEY`: `export VULTR_API_KEY=<VULTR_API_KEY>`
+2. Set your IAM user and policies.
+3. login with  `aws auth login` or whenever you want. 
+3. Download your ssh [keypair](https://lightsail.aws.amazon.com/ls/webapp/account/keys)
 
 ## RUN
 1. Run `terraform init && terraform apply`
