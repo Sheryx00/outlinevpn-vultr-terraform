@@ -54,4 +54,10 @@ resource "aws_lightsail_instance_public_ports" "custom" {
     from_port = var.api_port
     to_port   = var.keys_port
   }
+
+    port_info {
+    protocol  = "tcp"
+    from_port = 22
+    to_port   = 22
+  }
 }

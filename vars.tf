@@ -30,7 +30,7 @@ variable aws_lightsail_provider_zone {
 }
 
 variable aws_lightsailt_instance_zone {
-    default="us-east-1b"
+    default="us-east-1c"
 }
 
 variable "keypair" {

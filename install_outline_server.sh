@@ -5,7 +5,7 @@ KEYS_PORT=${keys_port}
 
 
 # Install dependencies
-sudo yum update && sudo yum install docker -y
+sudo yum update -y && sudo yum install docker -y
 sudo systemctl start docker
 
 # Download Jigsaw's install_server.sh
@@ -13,8 +13,6 @@ sudo bash -c "$(wget -qO- https://raw.githubusercontent.com/Jigsaw-Code/outline-
 
 # Allow external access to API
 echo "Opening ports $API_PORT and $KEYS_PORT"
-sudo iptables -A INPUT -p tcp --dport $API_PORT -j ACCEPT
-sudo iptables -A INPUT -p tcp --dport $KEYS_PORT -j ACCEPT
 
 # Print the API url
 API_URL = $(grep "apiUrl" /var/log/outline-install.log >> /tmp/outline-install-details.txt)
