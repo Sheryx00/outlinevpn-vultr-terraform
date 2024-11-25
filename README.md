@@ -16,3 +16,6 @@ It takes less steps to set up now.
 2. Open your Outline Manager and paste the output `apiUrl` to your Outline Manager
 3. Open your Outline Client and paste the `ss://` link.
 4. Connect :)
+
+
+<a href="https://www.buymeacoffee.com/Sheryx00" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
